@@ -15,7 +15,7 @@ extern "C" {
 typedef LONGLONG REFERENCE_TIME;
 typedef double REFTIME;
 /*--- DirectShow Reference - Constants and GUIDs */
-enum { 
+enum {
 	MERIT_PREFERRED = 0x800000,
 	MERIT_NORMAL = 0x600000,
 	MERIT_UNLIKELY = 0x400000,
@@ -232,7 +232,7 @@ typedef enum tagDVD_KARAOKE_ASSIGNMENT {
 	DVD_Assignment_LR1 = 4,
 	DVD_Assignment_LRM1 = 5,
 	DVD_Assignment_LR12 = 6,
-	DVD_Assignment_LRM12 = 7 
+	DVD_Assignment_LRM12 = 7
 } DVD_KARAOKE_ASSIGNMENT;
 typedef enum tagDVD_KARAOKE_CONTENTS {
 	DVD_Karaoke_GuideVocal1 = 0x0001,
@@ -372,12 +372,12 @@ typedef enum tagDVD_TIMECODE_FLAGS {
 typedef enum tagDVD_TITLE_APPMODE {
 	DVD_AppMode_Not_Specified = 0,
 	DVD_AppMode_Karaoke = 1,
-	DVD_AppMode_Other = 3 
+	DVD_AppMode_Other = 3
 } DVD_TITLE_APPMODE;
 typedef enum tagDVD_VIDEO_COMPRESSION {
 	DVD_VideoCompression_Other = 0,
 	DVD_VideoCompression_MPEG1 = 1,
-	DVD_VideoCompression_MPEG2 = 2 
+	DVD_VideoCompression_MPEG2 = 2
 } DVD_VIDEO_COMPRESSION;
 typedef enum _DVDECODERRESOLUTION {
 	DVDECODERRESOLUTION_720x480 = 1000,
@@ -737,10 +737,10 @@ typedef struct {
 } DDCOLORKEY;
 typedef struct tagDVD_AudioAttributes {
 	DVD_AUDIO_APPMODE AppMode;
-	DVD_AUDIO_FORMAT AudioFormat; 
+	DVD_AUDIO_FORMAT AudioFormat;
 	LCID Language;
 	DVD_AUDIO_LANG_EXT LanguageExtension;
-	BOOL fHasMultichannelInfo; 
+	BOOL fHasMultichannelInfo;
 	DWORD dwFrequency;
 	BYTE bQuantization;
 	BYTE bNumberOfChannels;
@@ -752,7 +752,7 @@ typedef struct tagDVD_DECODER_CAPS {
 	double dFwdMaxRateVideo;
 	double dFwdMaxRateAudio;
 	double dFwdMaxRateSP;
-	double dBwdMaxRateVideo; 
+	double dBwdMaxRateVideo;
 	double dBwdMaxRateAudio;
 	double dBwdMaxRateSP;
 	DWORD dwRes1;
@@ -807,7 +807,7 @@ typedef struct tagDVD_MultichannelAudioAttributes {
 } DVD_MultichannelAudioAttributes;
 typedef struct tagDVD_PLAYBACK_LOCATION {
 	ULONG TitleNum;
-	ULONG ChapterNum; 
+	ULONG ChapterNum;
 	ULONG TimeCode;
 } DVD_PLAYBACK_LOCATION;
 typedef struct tagDVD_PLAYBACK_LOCATION2 {
@@ -823,15 +823,15 @@ typedef struct tagDVD_SubpictureAttributes {
 	DVD_SUBPICTURE_LANG_EXT LanguageExtension;
 } DVD_SubpictureAttributes;
 typedef struct tagDVD_TIMECODE {
-	ULONG Hours1:4; 
-	ULONG Hours10:4; 
-	ULONG Minutes1:4; 
-	ULONG Minutes10:4; 
-	ULONG Seconds1:4; 
-	ULONG Seconds10:4; 
-	ULONG Frames1:4; 
-	ULONG Frames10:2; 
-	ULONG FrameRateCode:2; 
+	ULONG Hours1:4;
+	ULONG Hours10:4;
+	ULONG Minutes1:4;
+	ULONG Minutes10:4;
+	ULONG Seconds1:4;
+	ULONG Seconds10:4;
+	ULONG Frames1:4;
+	ULONG Frames10:2;
+	ULONG FrameRateCode:2;
 } DVD_TIMECODE;
 typedef struct tagDVD_VideoAttributes {
 	BOOL fPanscanPermitted;
@@ -877,7 +877,7 @@ typedef struct tag_DVINFO {
 /***************
 #define MAX_FILTER_NAME 128
 typedef struct _FilterInfo {
-	WCHAR achName[MAX_FILTER_NAME]; 
+	WCHAR achName[MAX_FILTER_NAME];
 	IFilterGraph *pGraph;
 } FILTER_INFO;
 ***************/
@@ -893,7 +893,7 @@ typedef struct _PinInfo {
 	PIN_DIRECTION dir;
 	WCHAR achName[MAX_PIN_NAME];
 } PIN_INFO;
-typedef struct{ 
+typedef struct{
 	QualityMessageType Type;
 	long Proportion;
 	REFERENCE_TIME Late;
@@ -907,7 +907,7 @@ typedef struct {
 typedef struct {
 	DWORD dwFlags;
 	UINT cInstances;
-	UINT nMediaTypes; 
+	UINT nMediaTypes;
 	const REGPINTYPES *lpMediaType;
 	UINT nMediums;
 	const REGPINMEDIUM *lpMedium;

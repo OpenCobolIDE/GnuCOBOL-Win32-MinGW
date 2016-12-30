@@ -124,7 +124,7 @@
 #define __out_ecount_opt(size)
 #define __out_ecount_part(size,length)
 #define __out_ecount_part_opt(size,length)
-#define __out_opt 
+#define __out_opt
 
 
 #endif /*_SPECSTRINGS_H */

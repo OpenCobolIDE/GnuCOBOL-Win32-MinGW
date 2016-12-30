@@ -109,7 +109,7 @@ typedef enum tagSCRIPTCONTF {
     sidFEFirst = sidHangul,
     sidFELast = sidHan
 } SCRIPTCONTF;
-  
+
 typedef struct tagDetectEncodingInfo {
     UINT nLangID;
     UINT nCodePage;
@@ -138,7 +138,7 @@ typedef struct tagRFC1766INFO {
     WCHAR wszRfc1766[MAX_RFC1766_NAME];
     WCHAR wszLocaleName[MAX_LOCALE_NAME];
 } RFC1766INFO, *PRFC1766INFO;
-typedef BYTE SCRIPT_ID;  
+typedef BYTE SCRIPT_ID;
 typedef struct tagSCRIPTINFO {
     SCRIPT_ID ScriptId;
     UINT uiCodePage;
@@ -152,7 +152,7 @@ typedef struct tagUNICODERANGE {
 } UNICODERANGE;
 
 typedef struct tagSCRIPTFONTINFO SCRIPTFONTINFO;
-  
+
 EXTERN_C const IID IID_IEnumCodePage;
 #define INTERFACE IEnumCodePage
 DECLARE_INTERFACE_(IEnumCodePage,IUnknown)
@@ -341,7 +341,7 @@ DECLARE_INTERFACE_(IMultiLanguage2,IUnknown)
 };
 #undef INTERFACE
 
-  
+
 #pragma pack(pop)
 #ifdef __cplusplus
 }

@@ -194,6 +194,7 @@ extern "C" {
 #define CREATE_FORCEDOS			0x00002000
 #define BELOW_NORMAL_PRIORITY_CLASS	0x00004000
 #define ABOVE_NORMAL_PRIORITY_CLASS	0x00008000
+#define STACK_SIZE_PARAM_IS_A_RESERVATION 0x00010000
 #define CREATE_BREAKAWAY_FROM_JOB	0x01000000
 #define CREATE_WITH_USERPROFILE		0x02000000
 #define CREATE_DEFAULT_ERROR_MODE	0x04000000
@@ -466,7 +467,7 @@ extern "C" {
 #define EV_RXFLAG 2
 #define EV_TXEMPTY 4
 /* also in ddk/ntapi.h */
-/* To restore default error mode, call SetErrorMode (0).  */ 
+/* To restore default error mode, call SetErrorMode (0).  */
 #define SEM_FAILCRITICALERRORS		0x0001
 #define SEM_NOGPFAULTERRORBOX		0x0002
 #define SEM_NOALIGNMENTFAULTEXCEPT	0x0004
@@ -950,7 +951,7 @@ typedef struct _WIN32_FIND_DATAA {
 	DWORD nFileSizeHigh;
 	DWORD nFileSizeLow;
 #ifdef _WIN32_WCE
-    DWORD dwOID; 
+    DWORD dwOID;
 #else
 	DWORD dwReserved0;
 	DWORD dwReserved1;
@@ -968,7 +969,7 @@ typedef struct _WIN32_FIND_DATAW {
 	DWORD nFileSizeHigh;
 	DWORD nFileSizeLow;
 #ifdef _WIN32_WCE
-    DWORD dwOID; 
+    DWORD dwOID;
 #else
 	DWORD dwReserved0;
 	DWORD dwReserved1;
@@ -1173,14 +1174,14 @@ typedef enum {
 #endif
 #if (_WIN32_WINNT >= 0x0500)
 typedef enum _COMPUTER_NAME_FORMAT {
-	ComputerNameNetBIOS, 
-	ComputerNameDnsHostname, 
-	ComputerNameDnsDomain, 
-	ComputerNameDnsFullyQualified, 
-	ComputerNamePhysicalNetBIOS, 
-	ComputerNamePhysicalDnsHostname, 
-	ComputerNamePhysicalDnsDomain, 
-	ComputerNamePhysicalDnsFullyQualified, 
+	ComputerNameNetBIOS,
+	ComputerNameDnsHostname,
+	ComputerNameDnsDomain,
+	ComputerNameDnsFullyQualified,
+	ComputerNamePhysicalNetBIOS,
+	ComputerNamePhysicalDnsHostname,
+	ComputerNamePhysicalDnsDomain,
+	ComputerNamePhysicalDnsFullyQualified,
 	ComputerNameMax
 } COMPUTER_NAME_FORMAT;
 #endif
@@ -1192,7 +1193,7 @@ typedef enum _DEP_SYSTEM_POLICY_TYPE {
 	AlwaysOn,
 	AlwaysOff,
 	OptIn,
-	OptOut 
+	OptOut
 } DEP_SYSTEM_POLICY_TYPE;
 /* http://msdn.microsoft.com/en-us/library/aa364228%28v=VS.85%29.aspx */
 typedef enum _FILE_INFO_BY_HANDLE_CLASS {
@@ -1243,7 +1244,7 @@ typedef PTOP_LEVEL_EXCEPTION_FILTER LPTOP_LEVEL_EXCEPTION_FILTER;
 typedef void(APIENTRY *PAPCFUNC)(ULONG_PTR);
 typedef void(CALLBACK *PTIMERAPCROUTINE)(PVOID,DWORD,DWORD);
 #if (_WIN32_WINNT >= 0x0500)
-typedef void(CALLBACK *WAITORTIMERCALLBACK)(PVOID,BOOLEAN);   
+typedef void(CALLBACK *WAITORTIMERCALLBACK)(PVOID,BOOLEAN);
 #endif
 #define MAKEINTATOM(i) (LPTSTR)((DWORD)((WORD)(i)))
 /* Functions */
@@ -1617,7 +1618,7 @@ WINBASEAPI BOOL WINAPI GetFileInformationByHandleEx(HANDLE,FILE_INFO_BY_HANDLE_C
 WINBASEAPI BOOL WINAPI GetFileSecurityA(LPCSTR,SECURITY_INFORMATION,PSECURITY_DESCRIPTOR,DWORD,PDWORD);
 WINBASEAPI BOOL WINAPI GetFileSecurityW(LPCWSTR,SECURITY_INFORMATION,PSECURITY_DESCRIPTOR,DWORD,PDWORD);
 WINBASEAPI DWORD WINAPI GetFileSize(HANDLE,PDWORD);
-#if (_WIN32_WINNT >= 0x0500) 
+#if (_WIN32_WINNT >= 0x0500)
 WINBASEAPI BOOL WINAPI GetFileSizeEx(HANDLE,PLARGE_INTEGER);
 #endif
 WINBASEAPI BOOL WINAPI GetFileTime(HANDLE,LPFILETIME,LPFILETIME,LPFILETIME);
@@ -1647,7 +1648,7 @@ WINBASEAPI DWORD WINAPI GetModuleFileNameA(HINSTANCE,LPSTR,DWORD);
 WINBASEAPI DWORD WINAPI GetModuleFileNameW(HINSTANCE,LPWSTR,DWORD);
 WINBASEAPI HMODULE WINAPI GetModuleHandleA(LPCSTR);
 WINBASEAPI HMODULE WINAPI GetModuleHandleW(LPCWSTR);
-#if (_WIN32_WINNT >= 0x0500)
+#if (_WIN32_WINNT >= 0x0501)
 WINBASEAPI BOOL WINAPI GetModuleHandleExA(DWORD,LPCSTR,HMODULE*);
 WINBASEAPI BOOL WINAPI GetModuleHandleExW(DWORD,LPCWSTR,HMODULE*);
 #endif
@@ -1801,7 +1802,7 @@ WINBASEAPI BOOL WINAPI GlobalMemoryStatusEx(LPMEMORYSTATUSEX);
 WINBASEAPI HGLOBAL WINAPI GlobalReAlloc(HGLOBAL,DWORD,UINT);
 WINBASEAPI DWORD WINAPI GlobalSize(HGLOBAL);
 WINBASEAPI VOID WINAPI GlobalUnfix(HGLOBAL); /* Obsolete: Has no effect. */
-WINBASEAPI BOOL WINAPI GlobalUnlock(HGLOBAL); 
+WINBASEAPI BOOL WINAPI GlobalUnlock(HGLOBAL);
 WINBASEAPI BOOL WINAPI GlobalUnWire(HGLOBAL); /* Obsolete: Has no effect. */
 WINBASEAPI PVOID WINAPI GlobalWire(HGLOBAL); /* Obsolete: Has no effect. */
 #define HasOverlappedIoCompleted(lpOverlapped)  ((lpOverlapped)->Internal != STATUS_PENDING)
@@ -2338,7 +2339,7 @@ typedef PCACTCTXW PCACTCTX;
 #endif
 #define GetModuleFileName GetModuleFileNameW
 #define GetModuleHandle GetModuleHandleW
-#if (_WIN32_WINNT >= 0x0500)
+#if (_WIN32_WINNT >= 0x0501)
 #define GetModuleHandleEx GetModuleHandleExW
 #endif
 #define GetNamedPipeHandleState GetNamedPipeHandleStateW
@@ -2545,7 +2546,7 @@ typedef PCACTCTXA PCACTCTX;
 #endif
 #define GetNamedPipeHandleState GetNamedPipeHandleStateA
 #define GetModuleHandle GetModuleHandleA
-#if (_WIN32_WINNT >= 0x0500)
+#if (_WIN32_WINNT >= 0x0501)
 #define GetModuleHandleEx GetModuleHandleExA
 #endif
 #define GetModuleFileName GetModuleFileNameA

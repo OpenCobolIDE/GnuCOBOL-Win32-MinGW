@@ -50,7 +50,7 @@ typedef enum _WTS_CONNECTSTATE_CLASS {
   WTSListen,
   WTSReset,
   WTSDown,
-  WTSInit 
+  WTSInit
 } WTS_CONNECTSTATE_CLASS;
 
   // session notification message flags
@@ -167,6 +167,56 @@ BOOL WTSSendMessageW(
 #else
 #define WTSSendMessage WTSSendMessageA
 #endif
+
+BOOL WTSVirtualChannelClose(
+  HANDLE hChannelHandle
+);
+
+HANDLE WTSVirtualChannelOpen(
+  HANDLE hServer,
+  DWORD SessionId,
+  LPSTR pVirtualName
+);
+
+#if (_WIN32_WINNT >= 0x600)
+HANDLE WTSVirtualChannelOpenEx(
+  DWORD SessionId,
+  LPSTR pVirtualName,
+  DWORD flags
+);
+#endif
+
+BOOL WTSVirtualChannelPurgeInput(
+  HANDLE hChannelHandle
+);
+
+BOOL WTSVirtualChannelPurgeOutput(
+  HANDLE hChannelHandle
+);
+
+#if (_WIN32_WINNT >= 0x501)
+BOOL WTSVirtualChannelQuery(
+  HANDLE hChannelHandle,
+  WTS_VIRTUAL_CLASS WtsVirtualClass,
+  PVOID *ppBuffer,
+  DWORD *pBytesReturned
+);
+#endif
+
+BOOL WTSVirtualChannelRead(
+  HANDLE hChannelHandle,
+  ULONG TimeOut,
+  PCHAR Buffer,
+  ULONG BufferSize,
+  PULONG pBytesRead
+);
+
+BOOL WTSVirtualChannelWrite(
+  HANDLE hChannelHandle,
+  PCHAR Buffer,
+  ULONG Length,
+  PULONG pBytesWritten
+);
 
 #endif /* _WIN32_WINNT >= 0x0500 */
 

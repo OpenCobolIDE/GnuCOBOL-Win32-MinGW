@@ -2579,7 +2579,7 @@ FONTOBJ_pjOpenTypeTablePointer(
 
 WIN32KAPI
 PFD_GLYPHATTR
-DDKAPI 
+DDKAPI
 FONTOBJ_pQueryGlyphAttrs(
   /*IN*/ FONTOBJ  *pfo,
   /*IN*/ ULONG  iMode);

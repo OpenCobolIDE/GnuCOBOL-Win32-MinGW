@@ -113,7 +113,7 @@
 #define D3DPRASTERCAPS_COLORPERSPECTIVE	0x400000
 #define D3DPRASTERCAPS_SCISSORTEST	0x1000000
 #define D3DPRASTERCAPS_SLOPESCALEDEPTHBIAS	0x2000000
-#define D3DPRASTERCAPS_DEPTHBIAS	0x4000000 
+#define D3DPRASTERCAPS_DEPTHBIAS	0x4000000
 #define D3DPRASTERCAPS_MULTISAMPLE_TOGGLE	0x8000000
 #define D3DPRESENT_INTERVAL_DEFAULT	0x00
 #define D3DPRESENT_INTERVAL_ONE	0x01
@@ -319,18 +319,18 @@ typedef struct _D3DCAPS9 {
 	DWORD DevCaps2;
 	float MaxNpatchTessellationLevel;
 	DWORD Reserved5;
-	UINT MasterAdapterOrdinal;   
-	UINT AdapterOrdinalInGroup;  
+	UINT MasterAdapterOrdinal;
+	UINT AdapterOrdinalInGroup;
 	UINT NumberOfAdaptersInGroup;
-	DWORD DeclTypes;              
-	DWORD NumSimultaneousRTs;     
-	DWORD StretchRectFilterCaps;  
+	DWORD DeclTypes;
+	DWORD NumSimultaneousRTs;
+	DWORD StretchRectFilterCaps;
 	D3DVSHADERCAPS2_0 VS20Caps;
 	D3DPSHADERCAPS2_0 PS20Caps;
 	DWORD VertexTextureFilterCaps;
 	DWORD MaxVShaderInstructionsExecuted;
 	DWORD MaxPShaderInstructionsExecuted;
-	DWORD MaxVertexShader30InstructionSlots; 
+	DWORD MaxVertexShader30InstructionSlots;
 	DWORD MaxPixelShader30InstructionSlots;
 } D3DCAPS9;
 

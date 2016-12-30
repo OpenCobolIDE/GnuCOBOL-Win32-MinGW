@@ -37,7 +37,7 @@ extern "C" {
 #define EC_DVD_WARNING 0x010D
 typedef enum _tagDVD_ERROR {
 	DVD_ERROR_Unexpected = 1,
-	DVD_ERROR_CopyProtectFail = 2,   
+	DVD_ERROR_CopyProtectFail = 2,
 	DVD_ERROR_InvalidDVD1_0Disc = 3,
 	DVD_ERROR_InvalidDiscRegion = 4,
 	DVD_ERROR_LowParentalLevel = 5,

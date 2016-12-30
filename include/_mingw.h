@@ -2,22 +2,33 @@
 /*
  * _mingw.h
  *
- * Mingw specific macros included by ALL include files.
+ * MinGW specific macros included by ALL mingwrt include files; (this file
+ * is part of the MinGW32 runtime library package).
  *
- * This file is part of the Mingw32 package.
+ * $Id: _mingw.h.in,v da4e8a6dc143 2016/10/14 13:21:59 keithmarshall $
  *
- * Contributors:
- *  Created by Mumit Khan  <khan@xraylith.wisc.edu>
+ * Written by Mumit Khan  <khan@xraylith.wisc.edu>
+ * Copyright (C) 1999, 2001-2011, 2014-2016, MinGW.org Project
  *
- *  THIS SOFTWARE IS NOT COPYRIGHTED
  *
- *  This source code is offered for use in the public domain. You may
- *  use, modify or distribute it freely.
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
  *
- *  This code is distributed in the hope that it will be useful but
- *  WITHOUT ANY WARRANTY. ALL WARRANTIES, EXPRESS OR IMPLIED ARE HEREBY
- *  DISCLAIMED. This includes but is not limited to warranties of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * The above copyright notice and this permission notice (including the next
+ * paragraph) shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
  *
  */
 #define __MINGW_H
@@ -30,17 +41,36 @@
  * which encodes the version as a long integer value, expressing:
  *
  *   __MINGW32_VERSION = 1,000,000 * major + 1,000 * minor + patch
+ *
+ * DO NOT EDIT these package version assignments manually; they are
+ * derived from the package version specification within configure.ac,
+ * whence they are propagated automatically, at package build time.
  */
-#define __MINGW32_VERSION           3021000L
+#define __MINGW32_VERSION           3022004L
 #define __MINGW32_MAJOR_VERSION           3
-#define __MINGW32_MINOR_VERSION          21
-#define __MINGW32_PATCHLEVEL              0
+#define __MINGW32_MINOR_VERSION          22
+#define __MINGW32_PATCHLEVEL              4
 
-#if __GNUC__ >= 3
-#ifndef __PCC__
+#if __GNUC__ >= 3 && ! defined __PCC__
 #pragma GCC system_header
 #endif
+
+#ifndef _MSVCRTVER_H
+/* Legacy versions of mingwrt use the macro __MSVCRT_VERSION__ to
+ * enable evolving features of different MSVCRT.DLL versions.  This
+ * usage is no longer recommended, but the __MSVCRT_VERSION__ macro
+ * remains useful when a non-freely distributable MSVCRxx.DLL is to
+ * be substituted for MSVCRT.DLL; for such usage, the substitute
+ * MSVCRxx.DLL may be identified as specified in...
+ */
+# include <msvcrtver.h>
 #endif
+
+/* A better inference than __MSVCRT_VERSION__, of the capabilities
+ * supported by the operating system default MSVCRT.DLL, is provided
+ * by the Windows API version identification macros.
+ */
+#include <w32api.h>
 
 /* The following are defined by the user (or by the compiler), to specify how
  * identifiers are imported from a DLL.  All headers should include this first,
@@ -51,10 +81,6 @@
  * __MINGW_IMPORT                  The attribute definition to specify imported
  *                                 variables/functions.
  * _CRTIMP                         As above.  For MS compatibility.
- * __MINGW32_VERSION               Runtime version.
- * __MINGW32_MAJOR_VERSION         Runtime major version.
- * __MINGW32_MINOR_VERSION         Runtime minor version.
- * __MINGW32_BUILD_DATE            Runtime build date.
  *
  * Macros to enable MinGW features which deviate from standard MSVC
  * compatible behaviour; these may be specified directly in user code,
@@ -62,7 +88,8 @@
  * or by inclusion in __MINGW_FEATURES__:
  *
  * __USE_MINGW_ANSI_STDIO          Select a more ANSI C99 compatible
- *                                 implementation of printf() and friends.
+ *                                 implementation of printf() and friends;
+ *                                 (users should not set this directly).
  *
  * Other macros:
  *
@@ -189,11 +216,11 @@
 #  ifndef __MINGW_IMPORT
    /* Note the extern. This is needed to work around GCC's
       limitations in handling dllimport attribute.  */
-#   define __MINGW_IMPORT  extern __attribute__ ((__dllimport__))
+#   define __MINGW_IMPORT  extern __attribute__((__dllimport__))
 #  endif
 #  ifndef _CRTIMP
 #   ifdef __USE_CRTIMP
-#    define _CRTIMP  __attribute__ ((dllimport))
+#    define _CRTIMP  __attribute__((dllimport))
 #   else
 #    define _CRTIMP
 #   endif
@@ -212,10 +239,10 @@
  * void __attribute__ ((__cdecl)) foo(void);
  */
 # ifndef __cdecl
-#  define __cdecl  __attribute__ ((__cdecl__))
+#  define __cdecl  __attribute__((__cdecl__))
 # endif
 # ifndef __stdcall
-#  define __stdcall __attribute__ ((__stdcall__))
+#  define __stdcall __attribute__((__stdcall__))
 # endif
 # ifndef __int64
 #  define __int64 long long
@@ -255,17 +282,8 @@
 #endif
 
 #ifdef __cplusplus
-# define _EXTERN_C       extern "C"
-# define _BEGIN_C_DECLS  extern "C" {
-# define _END_C_DECLS    }
-
 # define __CRT_INLINE    inline
-
 #else
-# define _EXTERN_C       extern
-# define _BEGIN_C_DECLS
-# define _END_C_DECLS
-
 # if __GNUC_STDC_INLINE__
 #  define __CRT_INLINE   extern inline __attribute__((__gnu_inline__))
 # else
@@ -274,8 +292,8 @@
 #endif
 
 # ifdef __GNUC__
-  /* A special form of __CRT_INLINE, to ALWAYS request inlining when
-   * possible is provided; originally specified as _CRTALIAS, this is
+  /* A special form of __CRT_INLINE is provided; it will ALWAYS request
+   * inlining when possible.  Originally specified as _CRTALIAS, this is
    * now deprecated in favour of __CRT_ALIAS, for syntactic consistency
    * with __CRT_INLINE itself.
    */
@@ -301,23 +319,23 @@
 # define __UNUSED_PARAM(x)
 #else
 # ifdef __GNUC__
-#  define __UNUSED_PARAM(x) x __attribute__ ((__unused__))
+#  define __UNUSED_PARAM(x) x __attribute__((__unused__))
 # else
 #  define __UNUSED_PARAM(x) x
 # endif
 #endif
 
 #ifdef __GNUC__
-#define __MINGW_ATTRIB_NORETURN __attribute__ ((__noreturn__))
-#define __MINGW_ATTRIB_CONST __attribute__ ((__const__))
+#define __MINGW_ATTRIB_NORETURN __attribute__((__noreturn__))
+#define __MINGW_ATTRIB_CONST __attribute__((__const__))
 #else
 #define __MINGW_ATTRIB_NORETURN
 #define __MINGW_ATTRIB_CONST
 #endif
 
 #if __MINGW_GNUC_PREREQ (3, 0)
-#define __MINGW_ATTRIB_MALLOC __attribute__ ((__malloc__))
-#define __MINGW_ATTRIB_PURE __attribute__ ((__pure__))
+#define __MINGW_ATTRIB_MALLOC __attribute__((__malloc__))
+#define __MINGW_ATTRIB_PURE __attribute__((__pure__))
 #else
 #define __MINGW_ATTRIB_MALLOC
 #define __MINGW_ATTRIB_PURE
@@ -327,19 +345,19 @@
    variadiac macro facility, because variadic macros cause syntax
    errors with  --traditional-cpp.  */
 #if  __MINGW_GNUC_PREREQ (3, 3)
-#define __MINGW_ATTRIB_NONNULL(arg) __attribute__ ((__nonnull__ (arg)))
+#define __MINGW_ATTRIB_NONNULL(arg) __attribute__((__nonnull__(arg)))
 #else
 #define __MINGW_ATTRIB_NONNULL(arg)
 #endif /* GNUC >= 3.3 */
 
 #if  __MINGW_GNUC_PREREQ (3, 1)
-#define __MINGW_ATTRIB_DEPRECATED __attribute__ ((__deprecated__))
+#define __MINGW_ATTRIB_DEPRECATED __attribute__((__deprecated__))
 #else
 #define __MINGW_ATTRIB_DEPRECATED
 #endif /* GNUC >= 3.1 */
 
 #if  __MINGW_GNUC_PREREQ (3, 3)
-#define __MINGW_NOTHROW __attribute__ ((__nothrow__))
+#define __MINGW_NOTHROW __attribute__((__nothrow__))
 #else
 #define __MINGW_NOTHROW
 #endif /* GNUC >= 3.3 */
@@ -348,18 +366,17 @@
 /* TODO: Mark (almost) all CRT functions as __MINGW_NOTHROW.  This will
 allow GCC to optimize away some EH unwind code, at least in DW2 case.  */
 
-#ifndef __MSVCRT_VERSION__
-/*  High byte is the major version, low byte is the minor. */
-# define __MSVCRT_VERSION__ 0x0600
-#endif
-
 /* Activation of MinGW specific extended features:
  */
 #ifndef __USE_MINGW_ANSI_STDIO
-/*
+/* Users should not set this directly; rather, define one (or more)
+ * of the feature test macros (tabulated below), or specify any of the
+ * compiler's command line options, (e.g. -posix, -ansi, or -std=c...),
+ * which cause _POSIX_SOURCE, or __STRICT_ANSI__ to be defined.
+ *
  * We must check this BEFORE we specifiy any implicit _POSIX_C_SOURCE,
- * otherwise we would always implicitly choose __USE_MINGW_ANSI_STDIO;
- * if user didn't specify it explicitly...
+ * otherwise we would always implicitly choose __USE_MINGW_ANSI_STDIO,
+ * even if none of these selectors are specified explicitly...
  */
 # if   defined __STRICT_ANSI__  ||  defined _ISOC99_SOURCE \
    ||  defined _POSIX_SOURCE    ||  defined _POSIX_C_SOURCE \
@@ -379,15 +396,13 @@ allow GCC to optimize away some EH unwind code, at least in DW2 case.  */
 #endif
 
 #ifndef _POSIX_C_SOURCE
- /*
-  * Users may define this, either directly or indirectly, to explicitly
+ /* Users may define this, either directly or indirectly, to explicitly
   * enable a particular level of visibility for the subset of those POSIX
   * features which are supported by MinGW; (notice that this offers no
   * guarantee that any particular POSIX feature will be supported).
   */
 # if defined _XOPEN_SOURCE
-  /*
-   * Specifying this is the preferred method for setting _POSIX_C_SOURCE;
+  /* Specifying this is the preferred method for setting _POSIX_C_SOURCE;
    * (POSIX defines an explicit relationship to _XOPEN_SOURCE).  Note that
    * any such explicit setting will augment the set of features which are
    * available to any compilation unit, even if it seeks to be strictly
@@ -415,9 +430,16 @@ allow GCC to optimize away some EH unwind code, at least in DW2 case.  */
    */
 #  define _POSIX_C_SOURCE  200809L
 
+#  if ! defined _EMULATE_GLIBC && ! defined _POSIX_SOURCE
+   /* For this default case, unless it has already been specified
+    * otherwise, we enable some GNU glibc extensions, which may be
+    * considered as violations of strict POSIX.1 conformance.
+    */
+#   define _EMULATE_GLIBC  1
+#  endif
+
 # elif defined _POSIX_SOURCE
-  /*
-   * Now formally deprecated by POSIX, some old code may specify this;
+  /* Now formally deprecated by POSIX, some old code may specify this;
    * it will enable a minimal level of POSIX support, in addition to the
    * limited feature set enabled for strict ANSI-C conformity.
    */
@@ -425,30 +447,23 @@ allow GCC to optimize away some EH unwind code, at least in DW2 case.  */
 # endif
 #endif
 
+#ifndef _ISOC99_SOURCE
+ /* libmingwex.a provides free-standing implementations for many of the
+  * functions which were introduced in C99; MinGW headers do not expose
+  * prototypes for these, unless this feature test macro is defined, by
+  * the user, or implied by other standards...
+  */
+# if __STDC_VERSION__ >= 199901L || _POSIX_C_SOURCE >= 200112L
+#  define _ISOC99_SOURCE  1
+# endif
+#endif
 
-/* Only Microsoft could attempt to justify this insanity: when building
- * a UTF-16LE application -- apparently their understanding of Unicode is
- * limited to this -- the C/C++ runtime requires that the user must define
- * the _UNICODE macro, while to use the Windows API's UTF-16LE capabilities,
- * it is the UNICODE macro, (without the leading underscore), which must be
- * defined.  The (bogus) explanation appears to be that it is the C standard
- * which dictates the requirement for the leading underscore, to avoid any
- * possible conflict with a user defined symbol; (bogus because the macro
- * must be user defined anyway -- it is not a private symbol -- and in
- * any case, the Windows API already reserves the UNICODE symbol as
- * a user defined macro, with equivalent intent.
- *
- * The real explanation, of course, is that this is just another example
- * of Microsoft irrationality; in any event, there seems to be no sane
- * scenario in which defining one without the other would be required,
- * or indeed would not raise potential for internal inconsistency, so we
- * ensure that either both are, or neither is defined.
+#if ! defined _MINGW32_SOURCE_EXTENDED && ! defined __STRICT_ANSI__
+/*
+ * Enable mingw32 extensions by default, except when __STRICT_ANSI__
+ * conformity mode has been enabled.
  */
-#if defined UNICODE && ! defined _UNICODE
-# define _UNICODE  UNICODE
-#endif
-#if defined _UNICODE && ! defined UNICODE
-# define UNICODE  _UNICODE
+# define _MINGW32_SOURCE_EXTENDED  1
 #endif
 
-#endif /* __MINGW_H */
+#endif /* __MINGW_H: $RCSfile: _mingw.h.in,v $: end of file */

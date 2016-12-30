@@ -9,7 +9,7 @@
 #  define EXTERN_C extern "C"
 # else
 #  define EXTERN_C extern
-# endif  /* __cplusplus */ 
+# endif  /* __cplusplus */
 # ifndef __int64
 #  define __int64 long long
 # endif
@@ -162,7 +162,7 @@ typedef unsigned long PROPID;
 /* Explicit naming of .text section for readonly data is only
    needed for older GGC (pre-2.95).
    More recent (3.4) GCC puts readonly data in .rdata.  */
-#if defined (__GNUC__) && (__GNUC__ <= 2 && __GNUC_MINOR__ < 95) 
+#if defined (__GNUC__) && (__GNUC__ <= 2 && __GNUC_MINOR__ < 95)
 #define GUID_SECT __attribute__ ((section (GUID_SECTION)))
 #else
 #define GUID_SECT
@@ -179,4 +179,4 @@ typedef unsigned long PROPID;
 #define DEFINE_GUID(n,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) GUID_EXT const GUID n
 #define DEFINE_OLEGUID(n,l,w1,w2) DEFINE_GUID(n,l,w1,w2,0xC0,0,0,0,0,0,0,0x46)
 #endif
-#endif 
+#endif

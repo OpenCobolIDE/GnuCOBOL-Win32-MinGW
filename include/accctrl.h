@@ -207,7 +207,7 @@ typedef struct _ACTRL_ALISTW {
 	ULONG                       cEntries;
 	PACTRL_PROPERTY_ENTRYW      pPropertyAccessList;
 } ACTRL_ACCESSW, *PACTRL_ACCESSW, ACTRL_AUDITW, *PACTRL_AUDITW;
-typedef struct _TRUSTEE_ACCESSA { 
+typedef struct _TRUSTEE_ACCESSA {
 	LPSTR           lpProperty;
 	ACCESS_RIGHTS   Access;
 	ULONG           fAccessFlags;
@@ -326,4 +326,4 @@ typedef INHERITED_FROMA INHERITED_FROM, *PINHERITED_FROM;
 #ifdef __cplusplus
 }
 #endif
-#endif 
+#endif

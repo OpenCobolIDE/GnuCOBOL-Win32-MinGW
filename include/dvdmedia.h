@@ -50,8 +50,8 @@ typedef struct tagVIDEOINFOHEADER2 {
 	REFERENCE_TIME AvgTimePerFrame;
 	DWORD dwInterlaceFlags;
 	DWORD dwCopyProtectFlags;
-	DWORD dwPictAspectRatioX; 
-	DWORD dwPictAspectRatioY; 
+	DWORD dwPictAspectRatioX;
+	DWORD dwPictAspectRatioY;
 	union {
 		DWORD dwControlFlags;
 		DWORD dwReserved1;

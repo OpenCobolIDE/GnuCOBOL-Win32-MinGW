@@ -307,7 +307,7 @@ typedef struct _wireVARIANT {
 		INT *pintVal;
 		UINT *puintVal;
 	} DUMMYUNIONNAME;
-} *wireVARIANT;  
+} *wireVARIANT;
 typedef LONG DISPID;
 typedef DISPID MEMBERID;
 typedef DWORD HREFTYPE;
@@ -495,7 +495,7 @@ DECLARE_INTERFACE_(IDispatch,IUnknown)
 #define IDispatch_GetIDsOfNames(p,a,b,c,d,e) (p)->lpVtbl->GetIDsOfNames(p,a,b,c,d,e)
 #define IDispatch_Invoke(p,a,b,c,d,e,f,g,h) (p)->lpVtbl->Invoke(p,a,b,c,d,e,f,g,h)
 #endif
-  
+
 #define INTERFACE IEnumVARIANT
 DECLARE_INTERFACE_(IEnumVARIANT,IUnknown)
 {

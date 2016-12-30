@@ -83,7 +83,7 @@ typedef enum PaletteType {
 	PaletteTypeFixedHalftone125 = 6,
 	PaletteTypeFixedHalftone216 = 7,
 	PaletteTypeFixedHalftone252 = 8,
-	PaletteTypeFixedHalftone256 = 9 
+	PaletteTypeFixedHalftone256 = 9
 } PaletteType;
 
 typedef struct ColorPalette {

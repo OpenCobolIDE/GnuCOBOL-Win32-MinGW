@@ -451,7 +451,7 @@ extern "C" {
 #endif /* (WINVER >= 0x0600) */
 #ifndef  _BASETSD_H
 typedef long LONG_PTR;
-#endif 
+#endif
 
 #ifndef RC_INVOKED
 typedef DWORD LCTYPE;
@@ -546,11 +546,11 @@ typedef struct _currencyfmtW {
 	UINT PositiveOrder;
 	LPWSTR lpCurrencySymbol;
 } CURRENCYFMTW,*LPCURRENCYFMTW;
-typedef struct nlsversioninfo { 
-	DWORD dwNLSVersionInfoSize; 
-	DWORD dwNLSVersion; 
-	DWORD dwDefinedVersion; 
-} NLSVERSIONINFO,*LPNLSVERSIONINFO; 
+typedef struct nlsversioninfo {
+	DWORD dwNLSVersionInfoSize;
+	DWORD dwNLSVersion;
+	DWORD dwDefinedVersion;
+} NLSVERSIONINFO,*LPNLSVERSIONINFO;
 typedef struct _numberfmtA {
 	UINT NumDigits;
 	UINT LeadingZero;

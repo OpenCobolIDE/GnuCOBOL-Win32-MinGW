@@ -62,11 +62,11 @@ typedef enum _RAS_HARDWARE_CONDITION {
 } RAS_HARDWARE_CONDITION;
 typedef enum _RAS_PORT_CONDITION {
 	RAS_PORT_NON_OPERATIONAL,
-	RAS_PORT_DISCONNECTED,	
+	RAS_PORT_DISCONNECTED,
 	RAS_PORT_CALLING_BACK,
 	RAS_PORT_LISTENING,
 	RAS_PORT_AUTHENTICATING,
-	RAS_PORT_AUTHENTICATED,	
+	RAS_PORT_AUTHENTICATED,
 	RAS_PORT_INITIALIZING
 } RAS_PORT_CONDITION;
 /*--- Remote Access Service Administration Reference - RAS Administration Structures */
@@ -374,7 +374,7 @@ typedef struct _MPR_INTERFACE_2 {
 #define MPR_ET_Require ET_Require
 #define MPR_ET_RequireMax ET_RequireMax
 #define MPR_ET_Optional ET_Optional
-#define MPR_VS_Default VS_Default	
+#define MPR_VS_Default VS_Default
 #define MPR_VS_PptpOnly VS_PptpOnly
 #define MPR_VS_PptpFirst VS_PptpFirst
 #define MPR_VS_L2tpOnly VS_L2tpOnly

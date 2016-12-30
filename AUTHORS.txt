@@ -11,3 +11,4 @@ Distributed under GNU LGPL.
 * libcob/byteswap.h (included in libcob/common.h later on)
 was extracted from GLIB 2.2.2 and modified by Keisuke Nishida
 and Roger While. Distributed under GNU LGPL.
+?

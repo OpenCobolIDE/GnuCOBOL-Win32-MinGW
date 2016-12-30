@@ -71,11 +71,11 @@ typedef struct tagMPEG1VIDEOINFO {
 	BYTE bSequenceHeader[1];
 } MPEG1VIDEOINFO;
 typedef struct tagAnalogVideoInfo {
-	RECT rcSource;           
-	RECT rcTarget;           
-	DWORD dwActiveWidth;      
-	DWORD dwActiveHeight;     
-	REFERENCE_TIME AvgTimePerFrame;    
+	RECT rcSource;
+	RECT rcTarget;
+	DWORD dwActiveWidth;
+	DWORD dwActiveHeight;
+	REFERENCE_TIME AvgTimePerFrame;
 } ANALOGVIDEOINFO;
 typedef struct _AM_FRAMESTEP_STEP {
 	DWORD dwFramesToStep;

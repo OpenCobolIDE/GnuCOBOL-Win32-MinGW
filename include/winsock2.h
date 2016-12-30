@@ -331,7 +331,7 @@ typedef WSADATA *LPWSADATA;
 #define AF_12844    25
 #define AF_IRDA     26
 #define AF_NETDES   28
-#if !(defined (__INSIDE_CYGWIN__) || defined (__INSIDE_MSYS__))
+#ifndef __INSIDE_MSYS__
 #define AF_MAX	29
 struct sockaddr {
 	u_short sa_family;
@@ -345,7 +345,7 @@ struct sockaddr {
  * Desired design of maximum size and alignment
  */
 #define _SS_MAXSIZE    128
-#define _SS_ALIGNSIZE  (sizeof (__int64)) 
+#define _SS_ALIGNSIZE  (sizeof (__int64))
 /*
  * Definitions used for sockaddr_storage structure paddings design.
  */
@@ -359,7 +359,7 @@ struct sockaddr_storage {
     __int64 __ss_align;  	   /* force alignment */
     char __ss_pad2[_SS_PAD2SIZE];  /*  pad to 128 */
 };
-#endif /* ! (__INSIDE_CYGWIN__ || __INSIDE_MSYS__) */
+#endif /* !__INSIDE_MSYS__ */
 
 struct sockproto {
 	u_short sp_family;
@@ -1139,6 +1139,7 @@ typedef struct _WSACOMPLETION {
 #define SIO_ADDRESS_LIST_CHANGE       _WSAIO(IOC_WS2,23)
 #define SIO_QUERY_TARGET_PNP_HANDLE   _WSAIOR(IOC_WS2,24)
 #define SIO_NSP_NOTIFY_CHANGE         _WSAIOW(IOC_WS2,25)
+#define SIO_UDP_CONNRESET             _WSAIOW(IOC_VENDOR,12)
 
 #define TH_NETDEV	0x00000001
 #define TH_TAPI	0x00000002

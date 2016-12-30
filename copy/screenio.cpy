@@ -1,25 +1,25 @@
-      *>  Copyright (C) 2008-2009 Roger While
+      *>  Copyright (C) 2008-2012 Free Software Foundation, Inc.
+      *>  Written by Roger While
       *>
-      *>  This file is part of GNU Cobol.
+      *>  This file is part of GnuCOBOL.
       *>
-      *>  The GNU Cobol compiler is free software; you can redistribute
+      *>  The GnuCOBOL compiler is free software: you can redistribute
       *>  it and/or modify it under the terms of the GNU General Public
-      *>  License as published by the Free Software Foundation; either
-      *>  version 2 of the License, or (at your option) any later
+      *>  License as published by the Free Software Foundation, either
+      *>  version 3 of the License, or (at your option) any later
       *>  version.
       *>
-      *>  GNU Cobol is distributed in the hope that it will be useful,
+      *>  GnuCOBOL is distributed in the hope that it will be useful,
       *>  but WITHOUT ANY WARRANTY; without even the implied warranty of
       *>  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
       *>  GNU General Public License for more details.
       *>
       *>  You should have received a copy of the GNU General Public
-      *>  License along with GNU Cobol; see the file COPYING.  If not,
-      *>  write to the Free Software Foundation, 51 Franklin Street,
-      *>  Fifth Floor, Boston, MA 02110-1301 USA
+      *>  License along with GnuCOBOL.
+      *>  If not, see <http://www.gnu.org/licenses/>.
 
 
-      *> Colors
+      *>   Colors
        78  COB-COLOR-BLACK     VALUE 0.
        78  COB-COLOR-BLUE      VALUE 1.
        78  COB-COLOR-GREEN     VALUE 2.
@@ -106,9 +106,13 @@
        78  COB-SCR-KEY-DOWN    VALUE 2004.
        78  COB-SCR-ESC         VALUE 2005.
        78  COB-SCR-PRINT       VALUE 2006.
-       78  COB-SCR-TAB         VALUE 2007. 
-       78  COB-SCR-BACK-TAB    VALUE 2008. 
+       78  COB-SCR-TAB         VALUE 2007.
+       78  COB-SCR-BACK-TAB    VALUE 2008.
+       78  COB-SCR-KEY-LEFT    VALUE 2009.
+       78  COB-SCR-KEY-RIGHT   VALUE 2010.
       *>  Input validation - Values 8xxx
        78  COB-SCR-NO-FIELD    VALUE 8000.
+       78  COB-SCR-TIME-OUT    VALUE 8001.
       *>  Other errors - Values 9xxx
        78  COB-SCR-FATAL       VALUE 9000.
+       78  COB-SCR-MAX-FIELD   VALUE 9001.

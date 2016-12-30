@@ -75,7 +75,7 @@ typedef BOOL (CALLBACK *PCMSCALLBACKW)(struct _tagCOLORMATCHSETUPW*,LPARAM);
 typedef CHAR COLOR_NAME[32];
 typedef COLOR_NAME *PCOLOR_NAME,*LPCOLOR_NAME;
 typedef DWORD TAGTYPE,*PTAGTYPE,*LPTAGTYPE;
-typedef enum 
+typedef enum
 {
   BM_x555RGB      = 0x0000,
   BM_x555XYZ      = 0x0101,
@@ -112,7 +112,7 @@ typedef enum
   BM_16b_GRAY,
   BM_565RGB       = 0x0001
 } BMFORMAT,*PBMFORMAT,*LPBMFORMAT;
-typedef enum 
+typedef enum
 {
   COLOR_GRAY       =   1,
   COLOR_RGB,
@@ -181,44 +181,44 @@ typedef union tagCOLOR {
 typedef struct _tagCOLORMATCHSETUPA {
   DWORD         dwSize;
   DWORD         dwVersion;
-  DWORD         dwFlags; 
+  DWORD         dwFlags;
   HWND          hwndOwner;
-  PCSTR         pSourceName; 
-  PCSTR         pDisplayName; 
+  PCSTR         pSourceName;
+  PCSTR         pDisplayName;
   PCSTR         pPrinterName;
-  DWORD         dwRenderIntent; 
+  DWORD         dwRenderIntent;
   DWORD         dwProofingIntent;
-  PSTR          pMonitorProfile; 
+  PSTR          pMonitorProfile;
   DWORD         ccMonitorProfile;
-  PSTR          pPrinterProfile; 
+  PSTR          pPrinterProfile;
   DWORD         ccPrinterProfile;
-  PSTR          pTargetProfile; 
+  PSTR          pTargetProfile;
   DWORD         ccTargetProfile;
-  DLGPROC       lpfnHook; 
+  DLGPROC       lpfnHook;
   LPARAM        lParam;
   PCMSCALLBACKA lpfnApplyCallback;
-  LPARAM        lParamApplyCallback; 
+  LPARAM        lParamApplyCallback;
 } COLORMATCHSETUPA,*PCOLORMATCHSETUPA,*LPCOLORMATCHSETUPA;
 typedef struct _tagCOLORMATCHSETUPW {
   DWORD         dwSize;
   DWORD         dwVersion;
-  DWORD         dwFlags; 
+  DWORD         dwFlags;
   HWND          hwndOwner;
-  PCWSTR        pSourceName; 
-  PCWSTR        pDisplayName; 
+  PCWSTR        pSourceName;
+  PCWSTR        pDisplayName;
   PCWSTR        pPrinterName;
-  DWORD         dwRenderIntent; 
+  DWORD         dwRenderIntent;
   DWORD         dwProofingIntent;
-  PWSTR         pMonitorProfile; 
+  PWSTR         pMonitorProfile;
   DWORD         ccMonitorProfile;
-  PWSTR         pPrinterProfile; 
+  PWSTR         pPrinterProfile;
   DWORD         ccPrinterProfile;
-  PWSTR         pTargetProfile; 
+  PWSTR         pTargetProfile;
   DWORD         ccTargetProfile;
-  DLGPROC       lpfnHook; 
+  DLGPROC       lpfnHook;
   LPARAM        lParam;
   PCMSCALLBACKW lpfnApplyCallback;
-  LPARAM        lParamApplyCallback; 
+  LPARAM        lParamApplyCallback;
 } COLORMATCHSETUPW,*PCOLORMATCHSETUPW,*LPCOLORMATCHSETUPW;
 typedef struct tagENUMTYPEW {
   DWORD   dwSize;

@@ -857,7 +857,7 @@ extern "C" {
 #define SYSPAL_ERROR 0
 #define SYSPAL_STATIC 1
 #define SYSPAL_NOSTATIC 2
-#define SYSPAL_NOSTATIC256 3 
+#define SYSPAL_NOSTATIC256 3
 #define TA_BASELINE 24
 #define TA_BOTTOM 8
 #define TA_TOP 0
@@ -1242,7 +1242,7 @@ extern "C" {
 #define TT_POLYGON_TYPE 24
 #define TT_PRIM_LINE 1
 #define TT_PRIM_QSPLINE 2
-#define TT_PRIM_CSPLINE 3 
+#define TT_PRIM_CSPLINE 3
 #define FONTMAPPER_MAX 10
 #define ENHMETA_STOCK_OBJECT 0x80000000
 #define WGL_FONT_LINES 0
@@ -1438,32 +1438,32 @@ typedef struct {
 	DWORD	bV4GammaGreen;
 	DWORD	bV4GammaBlue;
 } BITMAPV4HEADER,*LPBITMAPV4HEADER,*PBITMAPV4HEADER;
-typedef struct { 
-	DWORD	bV5Size; 
-	LONG	bV5Width; 
-	LONG	bV5Height; 
-	WORD	bV5Planes; 
-	WORD	bV5BitCount; 
-	DWORD	bV5Compression; 
-	DWORD	bV5SizeImage; 
-	LONG	bV5XPelsPerMeter; 
-	LONG	bV5YPelsPerMeter; 
-	DWORD	bV5ClrUsed; 
-	DWORD	bV5ClrImportant; 
-	DWORD	bV5RedMask; 
-	DWORD	bV5GreenMask; 
-	DWORD	bV5BlueMask; 
-	DWORD	bV5AlphaMask; 
-	DWORD	bV5CSType; 
-	CIEXYZTRIPLE bV5Endpoints; 
-	DWORD	bV5GammaRed; 
-	DWORD	bV5GammaGreen; 
-	DWORD	bV5GammaBlue; 
-	DWORD	bV5Intent; 
-	DWORD	bV5ProfileData; 
-	DWORD	bV5ProfileSize; 
-	DWORD	bV5Reserved; 
-} BITMAPV5HEADER,*LPBITMAPV5HEADER,*PBITMAPV5HEADER; 
+typedef struct {
+	DWORD	bV5Size;
+	LONG	bV5Width;
+	LONG	bV5Height;
+	WORD	bV5Planes;
+	WORD	bV5BitCount;
+	DWORD	bV5Compression;
+	DWORD	bV5SizeImage;
+	LONG	bV5XPelsPerMeter;
+	LONG	bV5YPelsPerMeter;
+	DWORD	bV5ClrUsed;
+	DWORD	bV5ClrImportant;
+	DWORD	bV5RedMask;
+	DWORD	bV5GreenMask;
+	DWORD	bV5BlueMask;
+	DWORD	bV5AlphaMask;
+	DWORD	bV5CSType;
+	CIEXYZTRIPLE bV5Endpoints;
+	DWORD	bV5GammaRed;
+	DWORD	bV5GammaGreen;
+	DWORD	bV5GammaBlue;
+	DWORD	bV5Intent;
+	DWORD	bV5ProfileData;
+	DWORD	bV5ProfileSize;
+	DWORD	bV5Reserved;
+} BITMAPV5HEADER,*LPBITMAPV5HEADER,*PBITMAPV5HEADER;
 typedef struct tagFONTSIGNATURE {
 	DWORD	fsUsb[4];
 	DWORD	fsCsb[2];
@@ -1487,23 +1487,23 @@ typedef struct  tagCOLORADJUSTMENT {
 	SHORT	caColorfulness;
 	SHORT	caRedGreenTint;
 } COLORADJUSTMENT,*LPCOLORADJUSTMENT;
-typedef struct _devicemodeA { 
-  BYTE   dmDeviceName[CCHDEVICENAME]; 
-  WORD   dmSpecVersion; 
-  WORD   dmDriverVersion; 
-  WORD   dmSize; 
-  WORD   dmDriverExtra; 
-  DWORD  dmFields; 
+typedef struct _devicemodeA {
+  BYTE   dmDeviceName[CCHDEVICENAME];
+  WORD   dmSpecVersion;
+  WORD   dmDriverVersion;
+  WORD   dmSize;
+  WORD   dmDriverExtra;
+  DWORD  dmFields;
   _ANONYMOUS_UNION union {
     _ANONYMOUS_STRUCT struct {
       short dmOrientation;
       short dmPaperSize;
       short dmPaperLength;
       short dmPaperWidth;
-      short dmScale; 
-      short dmCopies; 
-      short dmDefaultSource; 
-      short dmPrintQuality; 
+      short dmScale;
+      short dmCopies;
+      short dmDefaultSource;
+      short dmPrintQuality;
     } DUMMYSTRUCTNAME;
     _ANONYMOUS_STRUCT struct {
       POINTL dmPosition;
@@ -1512,22 +1512,22 @@ typedef struct _devicemodeA {
     } DUMMYSTRUCTNAME2;
   } DUMMYUNIONNAME;
 
-  short  dmColor; 
-  short  dmDuplex; 
-  short  dmYResolution; 
-  short  dmTTOption; 
-  short  dmCollate; 
-  BYTE   dmFormName[CCHFORMNAME]; 
-  WORD   dmLogPixels; 
-  DWORD  dmBitsPerPel; 
-  DWORD  dmPelsWidth; 
-  DWORD  dmPelsHeight; 
+  short  dmColor;
+  short  dmDuplex;
+  short  dmYResolution;
+  short  dmTTOption;
+  short  dmCollate;
+  BYTE   dmFormName[CCHFORMNAME];
+  WORD   dmLogPixels;
+  DWORD  dmBitsPerPel;
+  DWORD  dmPelsWidth;
+  DWORD  dmPelsHeight;
   _ANONYMOUS_UNION union {
-    DWORD  dmDisplayFlags; 
+    DWORD  dmDisplayFlags;
     DWORD  dmNup;
   } DUMMYUNIONNAME2;
-  DWORD  dmDisplayFrequency; 
-#if(WINVER >= 0x0400) 
+  DWORD  dmDisplayFrequency;
+#if(WINVER >= 0x0400)
   DWORD  dmICMMethod;
   DWORD  dmICMIntent;
   DWORD  dmMediaType;
@@ -1540,23 +1540,23 @@ typedef struct _devicemodeA {
 #endif
 #endif /* WINVER >= 0x0400 */
 } DEVMODEA,*LPDEVMODEA,*PDEVMODEA;
-typedef struct _devicemodeW { 
-  WCHAR   dmDeviceName[CCHDEVICENAME]; 
-  WORD   dmSpecVersion; 
-  WORD   dmDriverVersion; 
-  WORD   dmSize; 
-  WORD   dmDriverExtra; 
-  DWORD  dmFields; 
+typedef struct _devicemodeW {
+  WCHAR   dmDeviceName[CCHDEVICENAME];
+  WORD   dmSpecVersion;
+  WORD   dmDriverVersion;
+  WORD   dmSize;
+  WORD   dmDriverExtra;
+  DWORD  dmFields;
   _ANONYMOUS_UNION union {
     _ANONYMOUS_STRUCT struct {
       short dmOrientation;
       short dmPaperSize;
       short dmPaperLength;
       short dmPaperWidth;
-      short dmScale; 
-      short dmCopies; 
-      short dmDefaultSource; 
-      short dmPrintQuality; 
+      short dmScale;
+      short dmCopies;
+      short dmDefaultSource;
+      short dmPrintQuality;
     } DUMMYSTRUCTNAME;
     _ANONYMOUS_STRUCT struct {
       POINTL dmPosition;
@@ -1565,22 +1565,22 @@ typedef struct _devicemodeW {
     } DUMMYSTRUCTNAME2;
   } DUMMYUNIONNAME;
 
-  short  dmColor; 
-  short  dmDuplex; 
-  short  dmYResolution; 
-  short  dmTTOption; 
-  short  dmCollate; 
-  WCHAR  dmFormName[CCHFORMNAME]; 
-  WORD   dmLogPixels; 
-  DWORD  dmBitsPerPel; 
-  DWORD  dmPelsWidth; 
-  DWORD  dmPelsHeight; 
+  short  dmColor;
+  short  dmDuplex;
+  short  dmYResolution;
+  short  dmTTOption;
+  short  dmCollate;
+  WCHAR  dmFormName[CCHFORMNAME];
+  WORD   dmLogPixels;
+  DWORD  dmBitsPerPel;
+  DWORD  dmPelsWidth;
+  DWORD  dmPelsHeight;
   _ANONYMOUS_UNION union {
-    DWORD  dmDisplayFlags; 
+    DWORD  dmDisplayFlags;
     DWORD  dmNup;
   } DUMMYUNIONNAME2;
-  DWORD  dmDisplayFrequency; 
-#if(WINVER >= 0x0400) 
+  DWORD  dmDisplayFrequency;
+#if(WINVER >= 0x0400)
   DWORD  dmICMMethod;
   DWORD  dmICMIntent;
   DWORD  dmMediaType;
@@ -2285,7 +2285,7 @@ typedef struct tagGCP_RESULTSW {
 	UINT *lpOrder;
 	INT *lpDx;
 	INT *lpCaretPos;
-	LPWSTR lpClass;
+	LPSTR lpClass;
 	LPWSTR lpGlyphs;
 	UINT nGlyphs;
 	UINT nMaxFit;
@@ -2604,8 +2604,8 @@ typedef struct _BLENDFUNCTION {
     BYTE BlendOp;
     BYTE BlendFlags;
     BYTE SourceConstantAlpha;
-    BYTE AlphaFormat; 
-} BLENDFUNCTION,*PBLENDFUNCTION,*LPBLENDFUNCTION; 
+    BYTE AlphaFormat;
+} BLENDFUNCTION,*PBLENDFUNCTION,*LPBLENDFUNCTION;
 #define MM_MAX_NUMAXES  16
 typedef struct _DESIGNVECTOR {
 	DWORD dvReserved;

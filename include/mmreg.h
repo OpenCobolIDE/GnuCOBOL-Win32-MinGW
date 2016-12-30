@@ -43,7 +43,7 @@ typedef struct {
 		WORD wSamplesPerBlock;
 		WORD wReserved;
 	} Samples;
-	DWORD dwChannelMask; 
+	DWORD dwChannelMask;
 	GUID SubFormat;
 } WAVEFORMATEXTENSIBLE,*PWAVEFORMATEXTENSIBLE;
 #define SPEAKER_FRONT_LEFT 0x1

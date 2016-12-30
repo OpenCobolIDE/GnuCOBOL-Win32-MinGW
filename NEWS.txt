@@ -1,8 +1,75 @@
 NEWS - user visible changes				-*- outline -*-
 
-* 20140118 GNU Cobol 1.1 released
+* 20160813 GnuCOBOL 2.0rc1
 
-* 20130927 GNU Cobol 1.1 announced. GNU-ification of source code commencing
+** User Defined Functions
+
+** New cobc options:
+*** -t listing, -T wide listing, --tlines=lines, lines per page of listing
+*** -K <entry>, entry point compile static
+*** -i -info, display build/environment
+*** -j -job=args, run job after compile
+*** -P, generate preprocessor listing
+*** -Xref, generate cross reference (requires cobxref)
+*** -A, add options to C compile phase
+*** -Q, add options to C link phase
+*** -D define symbol for Compiler Directive Facility
+*** -f<tag>=value override .conf configuration setting
+*** -list-reserved, -list-intrinsics, -list-mnemonics, -list-system
+*** -W enable ALL warnings (more than -Wall, which excludes some)
+*** -Wunreachable report on unreachable statements
+*** -Wprototypes warn missing FUNCTION prototypes/definitions
+*** -fmfcomment * or / in column 1 as comment
+*** -facucomment $ in idicator area treated as *, | treated as *>
+*** Many compiler messaging changes, refactored for translation
+*** input filename of '-' reads source from standard in
+*** New -std=cobol2014
+*** new configuration settings
+**** call-overflow, literal-length, numeric-literal-length
+**** specify-reserved-words
+
+** New cobcrun options:
+*** -i -info, display build/environment
+*** -r -runtime-env, display runtime configuration
+*** -c -config, set runtime config from file
+*** -M -module, set path/module name when looking for entry
+
+** New build features
+*** coloured textsuite output
+*** Windows(tm) Visual Studio build support files added to source tree
+
+** New GnuCOBOL features
+*** User Defined Functions, FUNCTION-ID.
+*** Most of the COBOL 2014 spec Compiler Directive Facility is in
+*** Spanish and Dutch messages along with English and Japanese
+*** More C/C++ reserved words tested to avoid conflicts
+*** screen IO, many extended ACCEPT DISPLAY screen section changes
+*** stricter ordering of CONFIGURATION SECTION paragraphs
+*** PICTURE clause, more to COBOL 2014 spec
+*** ACCEPT OMITTED, waits for return/enter
+*** More Intrinsic Functions, including ISO 8601 FORMATTED-DATE and TIME
+*** Changes to INITIAL and RECURSIVE program handling, needs to improve more
+*** More IEEE numeric types added, FLOAT-DECIMAL-16, FLOAT-DECIMAL-34, etc
+*** More SWITCHes, from SWITCH-01 to SWITCH-36
+*** TALLY special register predefined
+*** More literal types added, numeric boolean etc.
+*** Nested OCCURS DEPENDING ON (when proper config settings
+*** comment keywords in IDENTIFICATION DIVISION treated as end-of-line comments
+*** PROCEDURE DIVISION RETURNING OMITTED support matching void C functions
+*** New system functions
+**** CBL_OC_HOSTED - provides access to C extern variables, like stdin, errno
+*** More support for EC-exception codes
+*** SET LAST EXCEPTION TO OFF
+
+* All files created by GnuCOBOL runtime use the same file permission settings
+  now: COB_FILE_MODE which was changed to 0666
+
+* 20130927 Change package name, and project to GnuCOBOL
+
+* MARK - Version 2.0
+* Move to GPL/LGPL 3
+
+* 20140118 GnuCOBOL 1.1 released
 
 * 20130510 Retagging OpenCOBOL 1.1 pre-rel as OpenCOBOL 1.1
            OpenCOBOL 1.1 CE announced
@@ -79,7 +146,7 @@ NEWS - user visible changes				-*- outline -*-
    This allows all application programs to be compiled as
    modules and driven by "cobcrun" similar to MF's "cobrun".
    Syntax - cobcrun <MAINPROG> [Arguments to program "MAINPROG"]
-   As "cobcrun" is linked with the static version of Open Cobol
+   As "cobcrun" is linked with the static version of OpenCOBOL
    libraries, it is easier to maintain concurrent versions on the
    same system.
 
@@ -271,7 +338,7 @@ Decimal arithmetic is done by using `long long'.
 
 Currently the following standards are available:
 
-  gnu           GNU COBOL (default)
+  gnu           GnuCOBOL (default)
   cobol85       COBOL 85
   cobol2002     COBOL 2002
   mvs           IBM COBOL for MVS & VM

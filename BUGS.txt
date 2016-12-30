@@ -1,7 +1,0 @@
-Known bugs found in this distribution, which are normally not in GnuCOBOL 1.1:
-
-* gettext is a little bit borked, some command line options are not recognized correctly,
-  at least -c (Compile and assemble, but do not link) which is misinterpreted
-  as -conf (compiler configuration file)
-* intrinsic FUNCTIONs returning always zero:
-  ANNUITY, EXP, LOG, LOG10, SQRT, STANDARD-DEVIATION, TAN

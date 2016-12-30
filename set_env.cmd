@@ -1,8 +1,8 @@
 @echo off
 
 echo.
-echo Setting environment for GnuCOBOL 1.1 with MinGW binaries
-echo (GCC 4.8.1, BDB 6.1.23, PDcurses 3.4, MPIR 2.7.0)
+echo Setting environment for GnuCOBOL 2.0 RC-2 with MinGW binaries
+echo (GCC 5.3.0, PDcurses 3.4, GMP 6.1.1, BDB 6.2.23.NC)
 
 :: Check if called already
 :: if yes, check if called from here - exit, in any other case 
@@ -10,7 +10,7 @@ echo (GCC 4.8.1, BDB 6.1.23, PDcurses 3.4, MPIR 2.7.0)
 if not "%COB_MAIN_DIR%" == "" (
 	echo.
 	if "%COB_MAIN_DIR%" == "%~dp0" (
-	   echo Information: batch was called alread from "%COB_MAIN_DIR%"
+	   echo Information: batch was called already from "%COB_MAIN_DIR%"
 	   echo              skipping environment setting...
 	   goto :cobcver
 	) else (
@@ -21,7 +21,8 @@ if not "%COB_MAIN_DIR%" == "" (
 	)
 )
 
-:: Get the main dir from the batch's position (only works in NT environments)
+:: Get the main dir from the batch's position 
+:: (only works in Windows NT environments or higher)
 set COB_MAIN_DIR=%~dp0
 
 :: settings for cobc
@@ -31,7 +32,7 @@ set COB_CFLAGS=-I"%COB_MAIN_DIR%include" %COB_CFLAGS%
 set COB_LDFLAGS=-L"%COB_MAIN_DIR%lib" %COB_LDFLAGS%
 
 :: settings for libcob
-rem the following won't work in GnuCOBOL 1.1 if there are spaces in COB_MAIN_DIR
+rem the following won't work in GnuCOBOL 2.0 if there are spaces in COB_MAIN_DIR
 set COB_LIBRARY_PATH=%COB_MAIN_DIR%extras
 
 :: Add the bin path of GnuCOBOL (including GCC) to PATH for further references

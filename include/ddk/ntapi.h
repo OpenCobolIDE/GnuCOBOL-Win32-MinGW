@@ -93,7 +93,7 @@ typedef enum _SYSTEM_INFORMATION_CLASS {
 	SystemVdmInstemulInformation = 19,
 	SystemInstructionEmulationCounts = 19,
 	SystemVdmBopInformation = 20,
-	SystemInvalidInfoClass1 = 20,	
+	SystemInvalidInfoClass1 = 20,
 	SystemFileCacheInformation = 21,
 	SystemCacheInformation = 21,
 	SystemPoolTagInformation = 22,

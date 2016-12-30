@@ -35,7 +35,7 @@ HRESULT WINAPI DXTraceW(const char*,DWORD,HRESULT,const WCHAR*,BOOL);
 #define DXGetErrorString8 DXGetErrorString8A
 #define DXGetErrorDescription8 DXGetErrorDescription8A
 #define DXTrace DXTraceA
-#endif 
+#endif
 
 #if defined(DEBUG) || defined(_DEBUG)
 #define DXTRACE_MSG(str)	DXTrace(__FILE__,(DWORD)__LINE__,0,str,FALSE)

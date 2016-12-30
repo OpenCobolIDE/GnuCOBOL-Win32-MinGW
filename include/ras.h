@@ -84,7 +84,7 @@ typedef unsigned long ULONG_PTR, *PULONG_PTR;
 #define RASEO2_UseGlobalDeviceSettings  0x00000080
 #define RASEO2_ReconnectIfDropped       0x00000100
 #define RASEO2_SharePhoneNumbers        0x00000200
-#endif		
+#endif
 #define RASNP_NetBEUI                   0x00000001
 #define RASNP_Ipx                       0x00000002
 #define RASNP_Ip                        0x00000004
@@ -235,7 +235,7 @@ typedef struct tagRASCONNW {
     DWORD dwSize;
     HRASCONN hrasconn;
     WCHAR szEntryName[RAS_MaxEntryName + 1];
-#if (WINVER >= 0x400) 
+#if (WINVER >= 0x400)
     WCHAR szDeviceType[RAS_MaxDeviceType + 1];
     WCHAR szDeviceName[RAS_MaxDeviceName + 1];
 #endif
@@ -256,7 +256,7 @@ typedef struct tagRASCONNA {
     DWORD dwSize;
     HRASCONN hrasconn;
     CHAR szEntryName[RAS_MaxEntryName + 1];
-#if (WINVER >= 0x400) 
+#if (WINVER >= 0x400)
     CHAR szDeviceType[RAS_MaxDeviceType + 1];
     CHAR szDeviceName[RAS_MaxDeviceName + 1];
 #endif
@@ -566,7 +566,7 @@ typedef struct tagRASENTRYW {
 	WCHAR szPrerequisiteEntry[RAS_MaxEntryName + 1];
 	DWORD dwRedialCount;
 	DWORD dwRedialPause;
-#endif	
+#endif
 } RASENTRYW, *LPRASENTRYW;
 
 typedef struct tagRASENTRYA {
@@ -623,7 +623,7 @@ typedef struct tagRASENTRYA {
 	CHAR szPrerequisiteEntry[RAS_MaxEntryName + 1];
 	DWORD dwRedialCount;
 	DWORD dwRedialPause;
-#endif		
+#endif
 } RASENTRYA, *LPRASENTRYA;
 
 
@@ -736,7 +736,7 @@ typedef RASDIALPARAMSW RASDIALPARAMS, *LPRASDIALPARAMS;
 typedef RASAMBW RASAMB, *LPRASAM;
 typedef RASPPPNBFW RASPPPNBF, *LPRASPPPNBF;
 typedef RASPPPIPXW RASPPPIPX, *LPRASPPPIPX;
-typedef RASPPPIPW RASPPPIP, *LPRASPPPIP; 
+typedef RASPPPIPW RASPPPIP, *LPRASPPPIP;
 typedef RASPPPLCPW RASPPPLCP, *LPRASPPPLCP;
 typedef RASSLIPW RASSLIP, *LPRASSLIP;
 typedef RASDEVINFOW  RASDEVINFO, *LPRASDEVINFO;
@@ -994,4 +994,4 @@ VOID APIENTRY RasFreeEapUserIdentityA (LPRASEAPUSERIDENTITYA);
 }
 #endif
 #include <poppack.h>
-#endif /* _RAS_H */ 
+#endif /* _RAS_H */

@@ -166,7 +166,7 @@ extern "C" {
 #if (_WIN32_WINNT >= 0x0500)
 #define PD_CURRENTPAGE	0x00400000
 #define PD_NOCURRENTPAGE	0x00800000
-#define PD_EXCLUSIONFLAGS	0x01000000 
+#define PD_EXCLUSIONFLAGS	0x01000000
 #define PD_USELARGETEMPLATE	0x10000000
 #define PD_RESULT_CANCEL	0
 #define PD_RESULT_PRINT	1
@@ -467,7 +467,7 @@ typedef struct tagPDW {
 	HANDLE hSetupTemplate;
 } PRINTDLGW,*LPPRINTDLGW;
 #if (WINVER >= 0x0500) && !defined (_OBJC_NO_COM)
-#include <unknwn.h>  /* for LPUNKNOWN  */ 
+#include <unknwn.h>  /* for LPUNKNOWN  */
 #include <prsht.h>   /* for HPROPSHEETPAGE  */
 typedef struct tagPRINTPAGERANGE {
    DWORD  nFromPage;

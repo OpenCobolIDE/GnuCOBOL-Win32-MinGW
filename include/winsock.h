@@ -1,7 +1,7 @@
 /*
 
   Definitions for winsock 1.1
-  
+
   Portions Copyright (c) 1980, 1983, 1988, 1993
   The Regents of the University of California.  All rights reserved.
 
@@ -80,7 +80,7 @@ for (__i = 0; __i < ((fd_set *)(set))->fd_count ; __i++) {\
 #endif
 #elif !defined(USE_SYS_TYPES_FD_SET)
 #warning "fd_set and associated macros have been defined in sys/types.  \
-    This can cause runtime problems with W32 sockets" 
+    This can cause runtime problems with W32 sockets"
 #endif /* ndef _SYS_TYPES_FD_SET */
 
 #if !(defined (__INSIDE_CYGWIN__) || defined (__INSIDE_MSYS__))
@@ -240,7 +240,7 @@ typedef struct WSAData {
 } WSADATA;
 typedef WSADATA *LPWSADATA;
 
-#if !(defined (__INSIDE_CYGWIN__) || defined (__INSIDE_MSYS__))
+#ifndef __INSIDE_MSYS__
 #define IP_OPTIONS	1
 #define SO_DEBUG	1
 #define SO_ACCEPTCONN	2
@@ -260,12 +260,12 @@ typedef WSADATA *LPWSADATA;
 #define SO_RCVTIMEO	0x1006
 #define SO_ERROR	0x1007
 #define SO_TYPE	0x1008
-#endif /* ! (__INSIDE_CYGWIN__ || __INSIDE_MSYS__) */
+#endif /* !__INSIDE_MSYS__ */
 /*
  * Note that the next 5 IP defines are specific to WinSock 1.1 (wsock32.dll).
  * They will cause errors or unexpected results if used with the
  * (gs)etsockopts exported from the WinSock 2 lib, ws2_32.dll. Refer ws2tcpip.h.
- */         
+ */
 #define IP_MULTICAST_IF	2
 #define IP_MULTICAST_TTL	3
 #define IP_MULTICAST_LOOP	4
@@ -528,7 +528,7 @@ typedef struct timeval *LPTIMEVAL;
  * When linking against the WinSock 1.1 lib, wsock32.dll, the mswsock functions
  * are automatically routed to mswsock.dll (on platforms with support).
  * The WinSock 2 lib, ws2_32.dll, does not contain any references to
- * the mswsock extensions. 
+ * the mswsock extensions.
  */
 
 #include <mswsock.h>

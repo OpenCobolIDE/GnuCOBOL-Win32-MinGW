@@ -98,14 +98,14 @@ typedef struct _SCSI_PASS_THROUGH_DIRECT {
   UCHAR  Cdb[16];
 } SCSI_PASS_THROUGH_DIRECT, *PSCSI_PASS_THROUGH_DIRECT;
 
-typedef struct _SRB_IO_CONTROL { 
-  ULONG  HeaderLength; 
-  UCHAR  Signature[8]; 
-  ULONG  Timeout; 
-  ULONG  ControlCode; 
-  ULONG  ReturnCode; 
-  ULONG  Length; 
-} SRB_IO_CONTROL, *PSRB_IO_CONTROL; 
+typedef struct _SRB_IO_CONTROL {
+  ULONG  HeaderLength;
+  UCHAR  Signature[8];
+  ULONG  Timeout;
+  ULONG  ControlCode;
+  ULONG  ReturnCode;
+  ULONG  Length;
+} SRB_IO_CONTROL, *PSRB_IO_CONTROL;
 
 typedef struct _SCSI_ADDRESS {
 	ULONG  Length;

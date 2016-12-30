@@ -2,11 +2,11 @@
 #define _DEVGUID_H
 #if __GNUC__ >=3
 #pragma GCC system_header
-#endif 
+#endif
 
 #ifdef __cplusplus
-extern "C" { 
-#endif 
+extern "C" {
+#endif
 
 extern const GUID GUID_DEVCLASS_WCEUSBS;
 extern const GUID GUID_DEVCLASS_USB;

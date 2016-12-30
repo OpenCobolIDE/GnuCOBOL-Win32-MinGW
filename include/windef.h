@@ -1,30 +1,48 @@
+/*
+ * windef.h
+ *
+ * Common definitions for the Win32 API.
+ *
+ * $Id: windef.h,v 34e5e7606781 2016/05/23 18:31:09 keithmarshall $
+ *
+ * Written by Anders Norlander  <anorland@hem2.passagen.se>
+ * Copyright (C) 1998-2002, 2006-2008, 2010, 2015, MinGW.org Project
+ *
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice (including the next
+ * paragraph) shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ */
 #ifndef _WINDEF_H
 #define _WINDEF_H
-#if __GNUC__ >=3
 #pragma GCC system_header
-#endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/* We used to provide preprocessor code here, to ensure that WINVER
+ * and _WIN32_WINNT are defined; this is now handled by inclusion of
+ * w32api.h, which in turn includes sdkddkver.h, so implementing the
+ * preferred technique of deriving these from a user assigned, (or
+ * default), NTDDI_VERSION setting.
+ */
+#include <w32api.h>
 
-#ifndef WINVER
-#define WINVER 0x0400
-/*
- * If you need Win32 API features newer the Win95 and WinNT then you must
- * define WINVER before including windows.h or any other method of including
- * the windef.h header.
- */
-#endif
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT WINVER
-/*
- * There may be the need to define _WIN32_WINNT to a value different from
- * the value of WINVER.  I don't have any example of why you would do that.
- * However, if you must then define _WIN32_WINNT to the value required before
- * including windows.h or any other method of including the windef.h header.
- */
-#endif
+_BEGIN_C_DECLS
+
 #ifndef WIN32
 #define WIN32
 #endif
@@ -55,20 +73,20 @@ extern "C" {
 #define TRUE 1
 #endif
 
-/* Pseudo modifiers for parameters
-   We don't use these unnecessary defines in the w32api headers. Define
-   them by default since that is what people expect, but allow users
-   to avoid the pollution.  */
 #ifndef _NO_W32_PSEUDO_MODIFIERS
-#define IN
-#define OUT
-#ifndef OPTIONAL
-#define OPTIONAL
-#endif
+/* Pseudo-modifiers support function argument classification:
+ * we don't use these unnecessary defines in the w32api headers,
+ * but define them by default, since that is what people expect;
+ * this is conditional, so that users may avoid the pollution.
+ */
+# define IN
+# define OUT
+# ifndef OPTIONAL
+#  define OPTIONAL
+# endif
 #endif
 
 #ifdef __GNUC__
-#define PACKED __attribute__((packed))
 #ifndef _fastcall
 #define _fastcall __attribute__((fastcall))
 #endif
@@ -93,10 +111,7 @@ extern "C" {
 #ifndef _declspec
 #define _declspec(e) __attribute__((e))
 #endif
-#elif defined(__WATCOMC__)
-#define PACKED
 #else
-#define PACKED
 #define _cdecl
 #define __cdecl
 #endif
@@ -213,17 +228,18 @@ extern "C" {
 #endif
 #endif
 
-/* FIXME: This will make some code compile. The programs will most
-   likely crash when an exception is raised, but at least they will
-   compile. */
 #if defined (__GNUC__) && defined (__SEH_NOOP)
-#define __try
-#define __except(x) if (0) /* don't execute handler */
-#define __finally
+/* FIXME: This will make some code compile. The programs will most
+ * likely crash when an exception is raised, but at least they will
+ * compile.
+ */
+# define __try
+# define __except(x) if (0) /* don't execute handler */
+# define __finally
 
-#define _try __try
-#define _except __except
-#define _finally __finally
+# define _try __try
+# define _except __except
+# define _finally __finally
 #endif
 
 typedef unsigned long DWORD;
@@ -332,7 +348,6 @@ typedef struct tagPOINTS {
 	SHORT y;
 } POINTS,*PPOINTS,*LPPOINTS;
 
-#ifdef __cplusplus
-}
-#endif
-#endif
+_END_C_DECLS
+
+#endif /* _WINDEF_H: $RCSfile: windef.h,v $: end of file */

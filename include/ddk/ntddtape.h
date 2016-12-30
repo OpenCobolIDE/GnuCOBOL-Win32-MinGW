@@ -56,19 +56,19 @@ extern "C" {
 
 
 typedef enum _TAPE_DRIVE_PROBLEM_TYPE {
-  TapeDriveProblemNone, 
+  TapeDriveProblemNone,
   TapeDriveReadWriteWarning,
-  TapeDriveReadWriteError, 
+  TapeDriveReadWriteError,
   TapeDriveReadWarning,
   TapeDriveWriteWarning,
   TapeDriveReadError,
-  TapeDriveWriteError, 
+  TapeDriveWriteError,
   TapeDriveHardwareError,
-  TapeDriveUnsupportedMedia, 
+  TapeDriveUnsupportedMedia,
   TapeDriveScsiConnectionError,
-  TapeDriveTimetoClean, 
+  TapeDriveTimetoClean,
   TapeDriveCleanDriveNow,
-  TapeDriveMediaLifeExpired, 
+  TapeDriveMediaLifeExpired,
   TapeDriveSnappedTape
 } TAPE_DRIVE_PROBLEM_TYPE;
 

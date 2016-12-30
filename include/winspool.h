@@ -324,11 +324,11 @@ typedef struct _JOB_INFO_2W {
 	DWORD Time;
 	DWORD PagesPrinted;
 } JOB_INFO_2W,*PJOB_INFO_2W,*LPJOB_INFO_2W;
-typedef struct _JOB_INFO_3 { 
-	DWORD JobId; 
-	DWORD NextJobId; 
-	DWORD Reserved; 
-} JOB_INFO_3,*PJOB_INFO_3,*LPJOB_INFO_3; 
+typedef struct _JOB_INFO_3 {
+	DWORD JobId;
+	DWORD NextJobId;
+	DWORD Reserved;
+} JOB_INFO_3,*PJOB_INFO_3,*LPJOB_INFO_3;
 typedef struct _DOC_INFO_1A {
 	LPSTR pDocName;
 	LPSTR pOutputFile;
@@ -404,7 +404,7 @@ typedef	struct	_DRIVER_INFO_4A {
 	LPSTR pDataFile;
 	LPSTR pConfigFile;
 	LPSTR pHelpFile;
-	LPSTR pDependentFiles;  	
+	LPSTR pDependentFiles;
 	LPSTR pMonitorName;
 	LPSTR pDefaultDataType;
 	LPSTR pszzPreviousNames;
@@ -692,12 +692,12 @@ typedef	struct _PRINTPROCESSOR_CAPS_1 {
 	DWORD dwNumberOfCopies;
 } PRINTPROCESSOR_CAPS_1,*PPRINTPROCESSOR_CAPS_1,*LPPRINTPROCESSOR_CAPS_1;
 #endif
-typedef	struct _PROVIDOR_INFO_1A { 
+typedef	struct _PROVIDOR_INFO_1A {
 	LPSTR pName;
 	LPSTR pEnvironment;
 	LPSTR pDLLName;
 } PROVIDOR_INFO_1A,*PPROVIDOR_INFO_1A,*LPPROVIDOR_INFO_1A;
-typedef	struct _PROVIDOR_INFO_1W { 
+typedef	struct _PROVIDOR_INFO_1W {
 	LPWSTR pName;
 	LPWSTR pEnvironment;
 	LPWSTR pDLLName;
